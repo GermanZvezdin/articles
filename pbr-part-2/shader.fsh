@@ -204,7 +204,7 @@ vec4 render(in vec3 ro, in vec3 rd) {
     vec4 reflection = reflection(ro, rd);
     vec4 refractionCol = refraction(ro, rd, 1.0/1.4, 1.0);
     
-    vec3 col = reflection.xyz;
+    vec3 col = reflection.xyz + 0.2 * refractionCol.xyz;
     
 	col = pow(col, vec3(1.0/1.2)); 
     
@@ -212,6 +212,7 @@ vec4 render(in vec3 ro, in vec3 rd) {
     return vec4(col, 1.0);
 
 }
+
 
 
 void mainImage(out vec4 fragColor, in vec2 fragCoord )
